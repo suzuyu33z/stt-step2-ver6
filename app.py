@@ -31,19 +31,6 @@ def file_speech_to_text(audio_file,set_language):
         text = "音声認識に失敗しました"
     return text # 認識した文字を返す
 
-# 音声認識の言語を引数に音声認識をする
-def mic_speech_to_text(set_language):
-
-    # マイク入力を音声ファイルとして読み込み
-    with sr.Microphone() as source:
-        audio = r.listen(source) # r.listen(マイク入力)で認識準備
-
-    try:
-        text = r.recognize_google(audio, language=set_language_list[set_language]) #  r.recognize_google(音声データ,言語)で音声認識して、textに代入
-    except:
-        text = "音声認識に失敗しました"
-    return text # 認識した文字を返す
-
 st.title("文字起こしアプリ") # タイトル
 st.write("音声認識する言語を選んでください。") # 案内を表示
 set_language = st.selectbox("音声認識する言語を選んでください。",set_language_list.keys()) # 音声認識に使う言語を選択肢として表示
@@ -61,16 +48,6 @@ if (file_upload !=None):
 
 
 st.write("マイクでの音声認識はこちらのボタンから") # 案内表示
-
-
-
-
-
-
-
-
-
-
 
 
 stt_button = Button(label="音声認識開始",width=123,height=36,margin=0)
