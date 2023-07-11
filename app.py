@@ -1,6 +1,6 @@
 
 import streamlit as st # フロントエンドを扱うstreamlitの機能をインポート
-import speech_recognition as sr # 音声認識の機能をインポート
+
 
 # 言語選択と、APIが認識する言語の変換リストを作成
 set_language_list = {
@@ -11,22 +11,11 @@ set_language_list = {
 # デフォルトの言語を設定
 set_language = "日本語"
 
-# sr.Recognizer()をｒに代入して省略
-r = sr.Recognizer()
+
 
 
 # 音声ファイルと音声認識の言語を引数に音声認識をする
-def file_speech_to_text(audio_file,set_language):
 
-    # 音声ファイルを読み込み
-    with sr.AudioFile(audio_file) as source:
-        audio = r.record(source) # r.record(開いた音声ファイル)で認識準備
-
-    try:
-        text = r.recognize_google(audio, language=set_language_list[set_language]) #  r.recognize_google(音声データ,言語)で音声認識して、textに代入
-    except:
-        text = "音声認識に失敗しました"
-    return text # 認識した文字を返す
 
 st.title("文字起こしアプリ") # タイトル
 st.write("音声認識する言語を選んでください。") # 案内を表示
@@ -39,7 +28,7 @@ file_upload = st.file_uploader("ここに音声認識したファイルをアッ
 if (file_upload !=None):
     
     st.write("音声認識結果:") # 案内表示
-    result_text = file_speech_to_text(file_upload,set_language) # アップロードされたファイルと選択した言語を元に音声認識開始
+    result_text = "aa" # アップロードされたファイルと選択した言語を元に音声認識開始
     st.write(result_text) # メソッドから返ってきた値を表示
     st.audio(file_upload) # アップロードした音声をきける形で表示
 
