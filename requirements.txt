@@ -1,4 +1,2 @@
 speechrecognition
-bokeh==2.4.3
-streamlit-bokeh-events
-protobuf==3.20.3
+
